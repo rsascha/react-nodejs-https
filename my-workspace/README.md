@@ -77,4 +77,35 @@ Create a file `/home/linuxbrew/.linuxbrew/etc/nginx/servers/my-workspace.conf` w
 include '~/development/react-nodejs-https/my-workspace/infrastructure/nginx'
 ```
 
+hmm ...
 
+```sh
+make nginx-up
+```
+
+I get: 
+
+```
+nginx: [emerg] getgrnam("nogroup") failed
+make: *** [nginx-up] Error 1
+```
+
+I have changed `/home/linuxbrew/.linuxbrew/etc/nginx/nginx.conf` to:
+
+```nginx
+
+user nobody;
+...
+
+```
+
+But I get:
+
+```plain
+sudo /home/linuxbrew/.linuxbrew/bin/nginx 
+nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
+nginx: [emerg] still could not bind()
+make: *** [nginx-up] Error 1
+```
+
+Maybe this is related to my AWS machine, but I don't know ...
