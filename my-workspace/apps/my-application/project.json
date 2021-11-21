@@ -1,0 +1,73 @@
+{
+  "root": "apps/my-application",
+  "sourceRoot": "apps/my-application/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/my-application",
+        "index": "apps/my-application/src/index.html",
+        "baseHref": "/",
+        "main": "apps/my-application/src/main.tsx",
+        "polyfills": "apps/my-application/src/polyfills.ts",
+        "tsConfig": "apps/my-application/tsconfig.app.json",
+        "assets": [
+          "apps/my-application/src/favicon.ico",
+          "apps/my-application/src/assets"
+        ],
+        "styles": ["apps/my-application/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/my-application/src/environments/environment.ts",
+              "with": "apps/my-application/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "my-application:build",
+        "hmr": true,
+        "proxyConfig": "apps/my-application/proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "my-application:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/my-application/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/my-application"],
+      "options": {
+        "jestConfig": "apps/my-application/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
