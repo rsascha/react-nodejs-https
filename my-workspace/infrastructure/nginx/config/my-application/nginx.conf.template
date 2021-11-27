@@ -1,0 +1,21 @@
+events {
+    worker_connections  16;
+}
+http {
+    include $MY_WORKSPACE_ROOT/infrastructure/nginx/config/mime.types;
+    server {
+        listen              8081 ssl;
+        server_name         my-application;
+        ssl_certificate     ssl/certificate.pem;
+        ssl_certificate_key ssl/key.pem;
+
+        location / {
+            root   $MY_WORKSPACE_ROOT/dist/apps/my-application;
+            index  index.html;
+        }
+
+        location ~ /api {
+           proxy_pass   http://127.0.0.1:3333;
+        }
+    }
+}

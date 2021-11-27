@@ -33,6 +33,21 @@ Build the API and the React application:
 * `nx run api:build` will create `dist/apps/api`.
 * `nx run my-application:build` will create `dist/apps/my-application`.
 
+## Setup bash auto complete
+
+```sh
+brew install bash-completion@2
+```
+
+Follow instructions: Add the following line to your ...
+
+I had to use `.bashrc` instead of `.bash_profile` to get it running.
+
+Test: 
+* Open a new terminal
+* `cd infrastructure/nginx`
+* `make ` [TAB] [TAB] should show the Makefile targets: start, etc. 
+
 ## Setup NGINX
 
 What I did:
@@ -41,71 +56,6 @@ What I did:
 brew install nginx
 ```
 
-Output:
+## Use NGINX
 
-```plain
-Docroot is: /home/linuxbrew/.linuxbrew/var/www
-
-The default port has been set in /home/linuxbrew/.linuxbrew/etc/nginx/nginx.conf to 8080 so that
-nginx can run without sudo.
-
-nginx will load all files in /home/linuxbrew/.linuxbrew/etc/nginx/servers/.
-
-To restart nginx after an upgrade:
-  brew services restart nginx
-Or, if you don't want/need a background service you can just run:
-  /home/linuxbrew/.linuxbrew/opt/nginx/bin/nginx -g daemon off;
-```
-
-Use `brew info nginx` to get information about your setup.
-
-My `/home/linuxbrew/.linuxbrew/etc/nginx/nginx.conf` looks like: [nginx.conf](./resources/nginx.conf.md)
-
-
-So - I don't need to modify the `nginx.conf`. 
-
-Notice the line: 
-
-```nginx
-include servers/*;
-``` 
-nginx will load all files in `/home/linuxbrew/.linuxbrew/etc/nginx/servers/`.
-
-Create a file `/home/linuxbrew/.linuxbrew/etc/nginx/servers/my-workspace.conf` with the content:
-
-```nginx
-include '~/development/react-nodejs-https/my-workspace/infrastructure/nginx'
-```
-
-hmm ...
-
-```sh
-make nginx-up
-```
-
-I get: 
-
-```
-nginx: [emerg] getgrnam("nogroup") failed
-make: *** [nginx-up] Error 1
-```
-
-I have changed `/home/linuxbrew/.linuxbrew/etc/nginx/nginx.conf` to:
-
-```nginx
-
-user nobody;
-...
-
-```
-
-But I get:
-
-```plain
-sudo /home/linuxbrew/.linuxbrew/bin/nginx 
-nginx: [emerg] bind() to 0.0.0.0:443 failed (98: Address already in use)
-nginx: [emerg] still could not bind()
-make: *** [nginx-up] Error 1
-```
-
-Maybe this is related to my AWS machine, but I don't know ...
+Follow: [infrastructure/nginx/README.md](infrastructure/nginx/README.md)
