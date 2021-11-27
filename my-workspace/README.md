@@ -41,8 +41,6 @@ Test:
 
 ## Setup NGINX
 
-What I did:
-
 ```sh
 brew install nginx
 ```
@@ -56,5 +54,7 @@ npm install
 npm run api
 npm run nginx
 ```
+
+Open: https://localhost:8081
 
 If this is not working, check out: [infrastructure/nginx/README.md](infrastructure/nginx/README.md)
