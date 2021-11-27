@@ -45,7 +45,7 @@ Test:
 brew install nginx
 ```
 
-More information: [infrastructure/nginx/README.md](infrastructure/nginx/README.md)
+More information: [infrastructure/nginx](infrastructure/nginx)
 
 ## Start Everything
 
@@ -57,4 +57,4 @@ npm run nginx
 
 Open: https://localhost:8081
 
-If this is not working, check out: [infrastructure/nginx/README.md](infrastructure/nginx/README.md)
+If this is not working, check out: [infrastructure/nginx](infrastructure/nginx)
