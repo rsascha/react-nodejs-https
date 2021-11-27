@@ -9,8 +9,6 @@ To get the sample application running, follow the instructions below.
 
 To get your custom React / NodeJS application running, read the instructions and adjust the file system path settings. Maybe it's a good idea to get this sample running, before you switch to your custom configuration.
 
-The path to the git repository on my machine: `/home/sascha/development/react-nodejs-https`
-
 ## Nx Setup
 
 You need to have something like: 
