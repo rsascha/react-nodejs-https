@@ -2,7 +2,7 @@
 
 ## Start / Stop NGINX
 
-Check the comment in `Makefile`.
+Check the comments in `Makefile`.
 
 Open a terminal in this directory and something like:
 

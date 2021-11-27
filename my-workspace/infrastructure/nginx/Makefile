@@ -18,11 +18,11 @@ kill-all-nginx:
 generate-config:
 	envsubst '$${MY_WORKSPACE_ROOT}' < $(PWD)/config/my-application/nginx.conf.template > $(PWD)/config/my-application/nginx.conf
 
-# Start the application for debugging
+# Start the application for debugging: https://localhost:8081
 start-my-application-foreground: kill-all-nginx generate-config
 	nginx -c $(PWD)/config/my-application/nginx.conf -e $(PWD)/logs/error.log -g 'daemon off;'
 
-# Start the application in background
+# Start the application in background: https://localhost:8081
 start-my-application: kill-all-nginx generate-config
 	nginx -c $(PWD)/config/my-application/nginx.conf -e $(PWD)/logs/error.log
 	@echo "Now open: https://localhost:8081"
