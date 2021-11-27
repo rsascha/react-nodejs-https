@@ -25,7 +25,7 @@ start-my-application-foreground: kill-all-nginx generate-config
 # Start the application in background
 start-my-application: kill-all-nginx generate-config
 	nginx -c $(PWD)/config/my-application/nginx.conf -e $(PWD)/logs/error.log
-	@echo "Now open: http://localhost:8081"
+	@echo "Now open: https://localhost:8081"
 
 # Send a stop signal
 stop-my-application:
