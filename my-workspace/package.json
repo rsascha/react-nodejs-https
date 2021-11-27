@@ -7,8 +7,8 @@
     "build": "nx build",
     "test": "nx test",
     "build:all": "nx run-many --target=build --all --parallel",
-    "serve:api": "nx run api:serve",
-    "start:nginx": "cd infrastructure/nginx && make start-my-application"
+    "api": "nx run api:serve",
+    "nginx": "cd infrastructure/nginx && make start-my-application"
   },
   "private": true,
   "dependencies": {

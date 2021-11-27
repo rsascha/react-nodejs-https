@@ -24,13 +24,6 @@ You need to install `nx`:
 npm install nx --global
 ```
 
-## Build Sample Project
-
-Build the API and the React application:
-
-* `nx run api:build` will create `dist/apps/api`.
-* `nx run my-application:build` will create `dist/apps/my-application`.
-
 ## Setup bash auto complete
 
 ```sh
@@ -54,6 +47,14 @@ What I did:
 brew install nginx
 ```
 
-## Use NGINX
+More information: [infrastructure/nginx/README.md](infrastructure/nginx/README.md)
 
-Follow: [infrastructure/nginx/README.md](infrastructure/nginx/README.md)
+## Start Everything
+
+```sh
+npm install
+npm run api
+npm run nginx
+```
+
+If this is not working, check out: [infrastructure/nginx/README.md](infrastructure/nginx/README.md)
